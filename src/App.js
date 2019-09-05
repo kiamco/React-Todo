@@ -3,9 +3,15 @@ import ListItems from './components/TodoComponents/TodoList.js'
 
 const todos = [{
   date: Date.now(),
-  title: 'asd',
-  description: 'asd',
-  deadline: 'asd',
+  title: 'create form component',
+  description: 'you know what todo',
+  deadline: 'today',
+},
+{
+  date: Date.now(),
+  title: 'study for Data Structures',
+  description: 'you know what todo',
+  deadline: 'today',
 }]
 
 class App extends React.Component {
@@ -25,14 +31,15 @@ class App extends React.Component {
   render() {
     return (
       <div className='App'>
-        <div classname='todo-container'>
+        <div className='todo-container'>
           <h2>Todo List</h2>
           {/* render list */}
-          <ListItems item={this.state.todos}/>
+          {this.state.todos.map(el => <ListItems item={el} />)}
+          
           {/* render form and but
           tons */}
-
         </div>
+        
       </div>
     );
   }
