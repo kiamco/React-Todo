@@ -19,14 +19,15 @@ const ListItem = props => {
     `
 
     return (
-            <div className={`list-item ${props.item.completed ? 'completed' : ''}`} onClick={() => props.clickHandle(props.item.date)}>
-                <h2>{props.item.title} <Span>{props.item.priority}</Span></h2>
-                <p>Description: </p>
-                <p>{props.item.description}</p>
-                {props.item.completed && 
-                    <h1 className='stamp'>COMPLETED</h1>
-                }
-            </div>
+        <div className={`list-item ${props.item.completed ? 'completed' : ''}`} onClick={() => props.clickHandle(props.item.date)}>
+            <h2>{props.item.title} <Span>{props.item.priority}</Span></h2>
+            <p>Description: </p>
+            <p>{props.item.description}</p>
+            {props.item.completed &&
+                <h1 className='stamp'>COMPLETED</h1>
+            }
+        </div>
+        
     )
 }
 

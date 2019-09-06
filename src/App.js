@@ -34,23 +34,30 @@ class App extends React.Component {
     this.setState({
       todos: [...this.state.todos, childData]
     })
-    
+
   }
 
   toggleTodo = (date) => {
 
     this.setState({
       todos: this.state.todos.map(todo => {
-        
-        if(todo.date === date){
+
+        if (todo.date === date) {
           console.log(todo);
-          return {...todo, completed: !todo.completed}
+          return { ...todo, completed: !todo.completed }
         }
 
         return todo;
       })
     })
-    
+
+  }
+
+  clear = (event) => {
+    event.preventDefault();
+    this.setState({
+      todos: this.state.todos.filter(todo => !todo.completed)
+    });
   }
 
   // this.setState({
@@ -66,8 +73,10 @@ class App extends React.Component {
           <h2>Todo List</h2>
           {/* render list */}
           <ListItemContainer>
-            {this.state.todos.map(el => <ListItems item={el} clickHandle={this.toggleTodo} />)}
+            {this.state.todos.map(el => <ListItems item={el} clickHandle={this.toggleTodo} clear={this.clear} />)}
           </ListItemContainer>
+          
+          <button onClick={this.clear}>Clear</button>
           {/* render form and but
           tons */}
 
