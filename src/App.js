@@ -71,15 +71,10 @@ class App extends React.Component {
         <div className='todo-container'>
           <Route exact to='/todoItem' component={(props) => (<TodoForm {...props} addCard={this.addTodo} />)} />
           <h2>Todo List</h2>
-          {/* render list */}
           <ListItemContainer>
             {this.state.todos.map(el => <ListItems item={el} clickHandle={this.toggleTodo} clear={this.clear} />)}
-          </ListItemContainer>
-          
+          </ListItemContainer>       
           <button onClick={this.clear}>Clear</button>
-          {/* render form and but
-          tons */}
-
         </div>
 
       </div>
