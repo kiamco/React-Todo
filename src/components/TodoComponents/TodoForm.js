@@ -61,6 +61,8 @@ const Select = Styled.select`
 const Label = Styled.label`
     font-size: 1.5rem;
     color:teal;
+    font-weight: bolder;
+    margin-top: 10px;
 `
 
 class TodoForm extends React.Component {
@@ -68,9 +70,11 @@ class TodoForm extends React.Component {
     constructor() {
         super();
         this.state = {
+            date: Date.now(),
             title: '',
             description: '',
-            priority: ''
+            priority: '',
+            completed: false
         };
     }
 

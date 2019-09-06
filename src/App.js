@@ -3,24 +3,19 @@ import { Route } from 'react-router-dom';
 import ListItems from './components/TodoComponents/TodoList.js'
 import TodoForm from './components/TodoComponents/TodoForm.js'
 import Styled from 'styled-components';
+import './components/TodoComponents/Todo.css'
 
 const todos = [{
-  date: Date.now(),
   title: 'create form component',
   description: 'you know what todo',
   priority: 'High',
-},
-{
-  date: Date.now(),
-  title: 'study for Data Structures',
-  description: 'you know what todo',
-  priority: 'High',
+  completed: false
 }]
 
 const ListItemContainer = Styled.div`
         display:flex;
         flex-flow: row wrap;
-        align-items: center;
+        align-items: base;
         width:100%;
     `
 
@@ -35,9 +30,27 @@ class App extends React.Component {
 
   addTodo = (event, childData) => {
     event.preventDefault();
+    console.log(this.state);
     this.setState({
       todos: [...this.state.todos, childData]
     })
+    
+  }
+
+  toggleTodo = (date) => {
+
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        
+        if(todo.date === date){
+          console.log(todo);
+          return {...todo, completed: !todo.completed}
+        }
+
+        return todo;
+      })
+    })
+    
   }
 
   // this.setState({
@@ -53,7 +66,7 @@ class App extends React.Component {
           <h2>Todo List</h2>
           {/* render list */}
           <ListItemContainer>
-            {this.state.todos.map(el => <ListItems item={el} />)}
+            {this.state.todos.map(el => <ListItems item={el} clickHandle={this.toggleTodo} />)}
           </ListItemContainer>
           {/* render form and but
           tons */}
